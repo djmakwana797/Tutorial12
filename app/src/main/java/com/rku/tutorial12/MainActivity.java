@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration =
                 new DividerItemDecoration(rcvUsers.getContext(),LinearLayoutManager.VERTICAL);
         rcvUsers.addItemDecoration(dividerItemDecoration);
+
+        //Apply Animation
+        int resId = R.anim.layout_animation_fall_down;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getApplicationContext(), resId);
+        rcvUsers.setLayoutAnimation(animation);
 
         volleyNetworkCallAPI();
     }
